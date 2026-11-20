@@ -40,6 +40,15 @@ struct{
     ;
 };
 
+Void GuardarClima(Clima info)
+{
+FILE * f = fopen("clima.dat" , "ab")
+while(f != NULL)
+{
+fwrite(&dato,sizeof(Clima),1,f);
+} 
+fclose(f);
+}
 template <typename T>
 struct Nodo {
     T info;
