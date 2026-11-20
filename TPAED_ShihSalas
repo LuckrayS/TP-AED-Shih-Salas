@@ -27,25 +27,30 @@ struct DFCH{
     int l_herradura, w_herradura; // L, lenght, W, width, en mm
 };
 
+struct tDelito{
+    char delito[50];
+};
+
+struct NodoD{
+    tDelito info;
+    NodoD *sgte;
+};
+
 struct AD{ // De menor a mayor. Nota: si cumplió los 18 en el año, sigue contando como adolescente
     int id;
     char nombre_adol[30];
     int fecha_detencion; // AA/MM/DD
     int edad;
-    NodoD* Delito;
+    NodoD *lista; // lista de delitos cometidos por el adolscente
     int fecha_liberacion; // AA/MM/DD
 };
-
-struct{
-    ;
-};
-
 
 template <typename T>
 struct Nodo {
     T info;
     Nodo<T>* sgte;
 };
+
 void GuardarClima(Clima info)
 {
 FILE * f = fopen("clima.dat" , "ab")
