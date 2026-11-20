@@ -40,7 +40,13 @@ struct{
     ;
 };
 
-Void GuardarClima(Clima info)
+
+template <typename T>
+struct Nodo {
+    T info;
+    Nodo<T>* sgte;
+};
+void GuardarClima(Clima info)
 {
 FILE * f = fopen("clima.dat" , "ab")
 while(f != NULL)
@@ -48,12 +54,21 @@ while(f != NULL)
 fwrite(&dato,sizeof(Clima),1,f);
 } 
 fclose(f);
-}
-template <typename T>
-struct Nodo {
-    T info;
-    Nodo<T>* sgte;
 };
+void BuscarClima(FILE * f,int id) //hay que definir un dato para el id a buscar
+{
+FILE * f = fopen("clima.dat","rb");
+
+Clima aux;
+while(fread(&aux,sizeof(clima),1,f))
+{
+    if (aux.id == id)
+    {
+        //mostrar todos los datos asociados...
+    }
+ fclose(f);   
+}
+}
 
 int main() 
 {
