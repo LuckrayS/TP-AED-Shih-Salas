@@ -1,50 +1,53 @@
-template <typename T>
-struct Nodo {
-    T info;
-    Nodo<T>* sgte;
-};
-
 #include <iostream>
 #include <cstring>
 using namespace std;
 
 struct Clima{
     int id; // Único
-    int fecha; // Único
+    int fecha; // Único; AA/MM/DD
     int T[3]; // De acuerdo a la persistencia
-    const char *clima; // Ej: lluvioso, soleado, etc.
+    char clima[30]; // Ej: lluvioso, soleado, etc.
     int lluvia; // 1mm ≡ 1L/m² de agua caída durante el día
 };
 
 struct MS{
-    int id;
-    int fecha;
-    const char *pais;
+    int id; // Único
+    int fecha; // AA/MM/DD
+    char pais[60];
     double latitud, longitud;
     float magnitud;
 };
 
 struct DFCH{
     int id; // Único
-    const char *nombre_caballo; // No único
+    char nombre_caballo[30]; // No único
     int id_caballo; // Único
-    int v_max;
-    int P;
-    int ;
+    float v_max; // Velocidad máxima alcanzada, en m/s
+    float peso; // Masa, en g 
+    int l_herradura, w_herradura; // L, lenght, W, width, en mm
 };
 
-struct a{
-    ;
+struct AD{ // De menor a mayor. Nota: si cumplió los 18 en el año, sigue contando como adolescente
+    int id;
+    char nombre_adol[30];
+    int fecha_detencion; // AA/MM/DD
+    int edad;
+    NodoD* Delito;
+    int fecha_liberacion; // AA/MM/DD
 };
 
 struct{
     ;
 };
 
+template <typename T>
+struct Nodo {
+    T info;
+    Nodo<T>* sgte;
+};
+
 int main() 
 {
     cout << "Hello, World!";
     return 0;
- cout << "hola" << endl;
- cout << "cambio" << endl; 
 }
