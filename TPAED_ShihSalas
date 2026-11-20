@@ -1,2 +1,7 @@
 holaa
 lllllllllllllll
+template <typename T>
+struct Nodo {
+    T info;
+    Nodo<T>* sgte;
+};
