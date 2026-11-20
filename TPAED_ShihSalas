@@ -5,3 +5,46 @@ struct Nodo {
     T info;
     Nodo<T>* sgte;
 };
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+struct Clima{
+    int id; // Único
+    int fecha; // Único
+    int T[3]; // De acuerdo a la persistencia
+    const char *clima; // Ej: lluvioso, soleado, etc.
+    int lluvia; // 1mm ≡ 1L/m² de agua caída durante el día
+};
+
+struct MS{
+    int id;
+    int fecha;
+    const char *pais;
+    double latitud, longitud;
+    float magnitud;
+};
+
+struct DFCH{
+    int id; // Único
+    const char *nombre_caballo; // No único
+    int id_caballo; // Único
+    int v_max;
+    int P;
+    int ;
+};
+
+struct a{
+    ;
+};
+
+struct{
+    ;
+};
+
+int main() 
+{
+    cout << "Hello, World!";
+    return 0;
+}
