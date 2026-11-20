@@ -45,6 +45,8 @@ struct AD{ // De menor a mayor. Nota: si cumplió los 18 en el año, sigue conta
     int fecha_liberacion; // AA/MM/DD
 };
 
+void mostrarFecha(int);
+
 template <typename T>
 struct Nodo {
     T info;
@@ -79,4 +81,9 @@ int main()
 {
     cout << "Hello, World!";
     return 0;
+}
+
+void mostrarFecha(int X){
+    cout << (X%100)/10 << X%10 << "/" << (X%10000)/1000 << (X%1000)/100 << "/" << X/100000 << (X/10000)%10;
+    return;
 }
