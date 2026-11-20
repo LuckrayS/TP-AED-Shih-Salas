@@ -45,4 +45,6 @@ int main()
 {
     cout << "Hello, World!";
     return 0;
+ cout << "hola" << endl;
+ cout << "cambio" << endl; 
 }
