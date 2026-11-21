@@ -14,7 +14,8 @@ struct MS{
     int id; // Único
     int fecha; // AA/MM/DD
     char pais[60];
-    double latitud, longitud;
+    double latitud; // -90° a 90° (Sur a Norte)
+    double longitud; // -180° a 180° (Oeste a Este)
     float magnitud;
 };
 
@@ -25,6 +26,7 @@ struct DFCH{
     float v_max; // Velocidad máxima alcanzada, en m/s
     float peso; // Masa, en g 
     int l_herradura, w_herradura; // L, lenght, W, width, en mm
+    int fecha_ultima_carrera; // Fecha de última carrera
 };
 
 struct tDelito{
@@ -45,7 +47,11 @@ struct AD{ // De menor a mayor. Nota: si cumplió los 18 en el año, sigue conta
     int fecha_liberacion; // AA/MM/DD
 };
 
+
+void GuardarClima(Clima);
+void BuscarClima(FILE *, int);
 void mostrarFecha(int);
+
 
 template <typename T>
 struct Nodo {
@@ -53,29 +59,7 @@ struct Nodo {
     Nodo<T>* sgte;
 };
 
-void GuardarClima(Clima info)
-{
-FILE * f = fopen("clima.dat" , "ab")
-while(f != NULL)
-{
-fwrite(&dato,sizeof(Clima),1,f);
-} 
-fclose(f);
-};
-void BuscarClima(FILE * f,int id) //hay que definir un dato para el id a buscar
-{
-FILE * f = fopen("clima.dat","rb");
 
-Clima aux;
-while(fread(&aux,sizeof(clima),1,f))
-{
-    if (aux.id == id)
-    {
-        //mostrar todos los datos asociados...
-    }
- fclose(f);   
-}
-}
 
 int main() 
 {
@@ -83,7 +67,34 @@ int main()
     return 0;
 }
 
+
+void GuardarClima(Clima info)
+{
+    FILE * f = fopen("clima.dat" , "ab")
+    while(f != NULL)
+    {
+        fwrite(&dato,sizeof(Clima),1,f);
+    } 
+    fclose(f);
+}
+
+void BuscarClima(FILE *f, int id) // Hay que definir un dato para el id a buscar
+{
+    FILE *f = fopen("clima.dat","rb");
+
+    Clima aux;
+    while(fread(&aux,sizeof(clima),1,f))
+    {
+        if (aux.id == id)
+        {
+            // Mostrar todos los datos asociados...
+        }
+     fclose(f);   
+    }
+}
+
 void mostrarFecha(int X){
     cout << (X%100)/10 << X%10 << "/" << (X%10000)/1000 << (X%1000)/100 << "/" << X/100000 << (X/10000)%10;
     return;
 }
+
